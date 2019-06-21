@@ -1,0 +1,84 @@
+main {
+  position: relative;
+}
+
+.screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  transition: opacity $d-slow $ease-out, background $d-slow $ease-out;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &--start {
+    background: $color-dark;
+
+    .percentage,
+    .button {
+      transition: opacity $d-slow $ease-out;
+    }
+
+    .button {
+      opacity: 0;
+    }
+
+    &.loaded {
+      .button {
+        opacity: 1;
+      }
+
+      .percentage {
+        opacity: 0;
+      }
+    }
+  }
+
+  &--end {
+    .credits {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      text-transform: uppercase;
+
+      &__title {
+        margin: 0 0 2rem;
+      }
+
+      &__item {
+        margin: 0 0 2rem;
+      }
+
+      &__type {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      &__anchor {
+        margin: 0 0.1rem;
+      }
+
+      &__reset {
+        margin: 2rem 0 0;
+
+        @include tablet-portrait-up {
+          margin-top: 6rem;
+        }
+      }
+    }
+  }
+}
